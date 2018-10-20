@@ -12,6 +12,12 @@ class ListsController < ApplicationController
   # GET /lists/1.json
   def show
     @tasks = @list.tasks
+
+    # CSV
+    respond_to do |format|
+      format.html
+      format.csv { send_data @tasks.to_csv }
+    end
   end
 
   # GET /lists/new
