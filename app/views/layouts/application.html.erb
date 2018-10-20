@@ -10,6 +10,26 @@
   </head>
 
   <body>
+    <nav>
+      <ul>
+        <li><%= link_to "Home", lists_path %></li>
+        <% if user_signed_in? %>
+          <%= image_tag current_user.avatar.variant(resize: "150x150") %>
+          <li>
+            <a href="#">Account</a>
+            <ul>
+              <li><%= link_to "Profile", '#' %></li>
+              <li><%= link_to "Settings", '#' %></li>
+              <li>
+                <%= link_to "Log out", destroy_user_session_path , method: :delete %>
+              </li>
+            </ul>
+          </li>
+        <% else %>
+          <li><%= link_to "Log in", user_session_path %></li>
+        <% end %>
+        </ul>
+    </nav>
     <%= yield %>
   </body>
 </html>
