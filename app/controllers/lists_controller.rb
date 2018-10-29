@@ -16,7 +16,9 @@ class ListsController < ApplicationController
     # CSV
     respond_to do |format|
       format.html
+      format.json
       format.csv { send_data @tasks.to_csv }
+      format.pdf {render template: 'lists/pdf', pdf: 'pdfName'}
     end
   end
 

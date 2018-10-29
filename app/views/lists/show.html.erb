@@ -27,8 +27,8 @@
   </tbody>
 </table>
 <br>
-<%= link_to 'New Task', new_task_path(@list.id) %>
-
-<%= link_to 'Export to CSV', {:format => :csv} %>
+<%= link_to 'New Task', new_task_path(@list.id) %> |
+<%= link_to 'Export to CSV', {:format => :csv} %> |
+<%= link_to 'Export to PDF', {:format => :pdf} %> |
 <%= link_to 'Edit', edit_list_path(@list) %> |
 <%= link_to 'Back', lists_path %>
