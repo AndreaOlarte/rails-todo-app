@@ -9,7 +9,7 @@ class ApplicationController < ActionController::Base
   # Send devise the avatar
   protected
   def configure_permitted_parameters
-    devise_parameter_sanitizer.permit(:sign_up, keys: [:avatar])
-    devise_parameter_sanitizer.permit(:account_update, keys: [:avatar])
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:avatar, :name, :description])
+    devise_parameter_sanitizer.permit(:account_update, keys: [:avatar, :name, :description])
   end
 end
