@@ -22,8 +22,7 @@
   </div>
 
   <div class="field">
-    <%= form.label :list_id %>
-    <%= form.number_field :list_id %>
+    <%= form.hidden_field :list_id, :value => params[:format] %>
   </div>
 
   <div class="actions">
