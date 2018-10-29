@@ -24,7 +24,7 @@
                 <%= image_tag current_user.avatar.variant(resize: "50x50") %>
               </a>
               <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <a class="dropdown-item" href="#"><%= link_to "Profile", '#' %></a>
+              <a class="dropdown-item" href="#"><%= link_to "Profile", edit_user_registration_path(current_user) %></a>
                 <a class="dropdown-item" href="#"><%= link_to "Log out", destroy_user_session_path , method: :delete %></a>
               </div>
             </li>
