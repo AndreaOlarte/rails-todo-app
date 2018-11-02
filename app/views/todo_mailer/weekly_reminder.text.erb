@@ -1,0 +1,13 @@
+Here's your weekly reminder, <%= @user.name %>
+===============================================
+Uncompleted tasks per TODO list
+<% @user.lists.each do |list| %>
+    TODO List: <%= list.title %>
+    <% list.tasks.each do |task| %>
+        <% unless task.done %>
+            * <%= task.description %>
+        <% end %>
+    <% end %>
+<% end %>
+
+Don't give up on completing them and have a great day!
