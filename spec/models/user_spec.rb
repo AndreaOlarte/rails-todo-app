@@ -36,12 +36,12 @@ RSpec.describe User, type: :model do
     end
   end
 
-  # context 'when the user email is too long' do
-  #   let (:email) {'x' * 256 + '@example.com'}
-  #   it 'should be invalid' do
-  #     expect(user).not_to be_valid
-  #   end
-  # end
+  context 'when the user email is too long' do
+    let (:email) {'x' * 50 + '@example.com'}
+    it 'should be invalid' do
+      expect(user).not_to be_valid
+    end
+  end
   
   context 'when email address is not unique' do 
     let (:another_user) {user.dup}
@@ -83,10 +83,10 @@ RSpec.describe User, type: :model do
 
   # NAME
   context 'when enters a name' do
-    context 'when name is too long' do
+    context 'when name has more than 50 characters' do
       let(:user_with_name) do
         User.new( 
-          name: 'name' * 65537,
+          name: 'name' * 20,
           email: email,
           password: password,
           password_confirmation: password
@@ -100,21 +100,21 @@ RSpec.describe User, type: :model do
   end
 
   # DESCRIPTION
-  # context 'when enters a description' do
-  #   context 'when description is too long' do
-  #     let(:user_with_desc) do
-  #       User.new( 
-  #         email: email,
-  #         password: password,
-  #         password_confirmation: password,
-  #         description: 'x' * 65537
-  #       )
-  #     end
-  #     it "should be invalid" do
-  #       expect(user_with_desc).not_to be_valid
-  #     end
-  #   end
-  # end
+  context 'when enters a description' do
+    context 'when description has more than 150 characters' do
+      let(:user_with_desc) do
+        User.new( 
+          email: email,
+          password: password,
+          password_confirmation: password,
+          description: 'x' * 151
+        )
+      end
+      it "should be invalid" do
+        expect(user_with_desc).not_to be_valid
+      end
+    end
+  end
 
   # AVATAR
   context 'when enters an image as an avatar' do
@@ -130,18 +130,6 @@ RSpec.describe User, type: :model do
         # expect(user).not_to be_valid unless user.avatar.content_type.in?( correct_types )
         expect(user.avatar.content_type.in?(correct_types)).to eq(false)
       end
-
-      # let(:user_with_desc) do
-      #   User.new( 
-      #     email: email,
-      #     password: password,
-      #     password_confirmation: password,
-      #     description: 'x' * 1001
-      #     )
-      # end
-      # it "should be invalid" do
-      #   expect(user_with_desc).not_to be_valid
-      # end
     end
   end
 
