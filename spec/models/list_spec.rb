@@ -27,6 +27,26 @@ RSpec.describe List, type: :model do
     end
   end
 
-  context 'when user does not exist' do
+  # context 'when user does not exist' do
+  #   it 'should be invalid' do
+  #     list.user_id = 3000
+  #     expect(list).not_to be_valid
+  #   end
+  # end
+
+  context 'when has an invalid title' do
+    let (:title) {''}
+    it 'should be invalid' do
+      # list.title = nil
+      expect(list).not_to be_valid
+    end
+  end
+
+  context 'when has a title longer than 50 characters' do
+    let (:title) {'x' * 51}
+    it 'should be invalid' do
+      # list.title = nil
+      expect(list).not_to be_valid
+    end
   end
 end
